@@ -1,15 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Com.Stackroute</groupId>
-  <artifactId>KeepNote-Step1-Boilerplate</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>KeepNote-Step1-Boilerplate Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-   <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
-		
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Com.Stackroute</groupId>
+	<artifactId>KeepNote-Step1-Boilerplate</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>KeepNote-Step1-Boilerplate Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+
 
 		<!-- dependency for JUNIT 4 to be added -->
 		<dependency>
@@ -28,7 +29,12 @@
 		</dependency>
 
 		<!-- Dependency for JSTL to be added -->
-		
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 		<!-- Dependency for jaxb-api to be added(if using JDK9) -->
 
 		<!-- Dependency for jaxb-impl to be added(if using JDK9) -->
@@ -58,9 +64,9 @@
 			<scope>provided</scope>
 		</dependency>
 
-  </dependencies>
-  <build>
-  <pluginManagement>
+	</dependencies>
+	<build>
+		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -83,6 +89,6 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-    <finalName>KeepNote-Step1-Boilerplate</finalName>
-  </build>
+		<finalName>KeepNote-Step1-Boilerplate</finalName>
+	</build>
 </project>
