@@ -42,6 +42,7 @@ public class NoteController {
 	NoteRepository noteRepository = (NoteRepository) appContext.getBean("noteRepository");
 	private static final String VIEW_NAME = "index";
 	private static final String NOTE_ID = "noteId";
+	private static final String NOTE_LIST = "noteList";
 
 	/*
 	 * Define a handler method to read the existing notes by calling the
@@ -52,7 +53,7 @@ public class NoteController {
 	@GetMapping("/")
 	public String getAllNotes(ModelMap model) {
 		List<Note> noteList = noteRepository.getAllNotes();
-		model.addAttribute("noteList", noteList);
+		model.addAttribute(NOTE_LIST, noteList);
 		return VIEW_NAME;
 	}
 
@@ -88,7 +89,7 @@ public class NoteController {
 			noteRepository.addNote(addNote);
 		}
 		//update note list
-		model.addAttribute("updateList", noteRepository.getAllNotes());
+		model.addAttribute(NOTE_LIST, noteRepository.getAllNotes());
 		return VIEW_NAME;
 	}
 
@@ -97,12 +98,12 @@ public class NoteController {
 	 * deleteNote() method of the NoteRepository class This handler method should
 	 * map to the URL "/deleteNote"
 	 */
-	@GetMapping("/deleteNote")
+	@PostMapping("/deleteNote")
 	public String deleteNote(ModelMap model, @RequestParam int noteId) {
 		//delete provided note id from list
 		noteRepository.deleteNote(noteId);
 		//update note list
-		model.addAttribute("updateList", noteRepository.getAllNotes());
+		model.addAttribute(NOTE_LIST, noteRepository.getAllNotes());
 		return "redirect:/";
 	}
 
