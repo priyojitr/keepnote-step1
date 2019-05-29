@@ -31,7 +31,7 @@ public class Note {
 
 	}
 
-	public void setNoteId(int noteId) {
+	public void setNoteId(final int noteId) {
 		this.noteId = noteId;
 	}
 
@@ -39,7 +39,7 @@ public class Note {
 		return this.noteTitle;
 	}
 
-	public void setNoteTitle(String noteTitle) {
+	public void setNoteTitle(final String noteTitle) {
 		this.noteTitle = noteTitle;
 	}
 
@@ -47,7 +47,7 @@ public class Note {
 		return this.noteContent;
 	}
 
-	public void setNoteContent(String noteContent) {
+	public void setNoteContent(final String noteContent) {
 		this.noteContent = noteContent;
 	}
 
@@ -55,7 +55,7 @@ public class Note {
 		return this.noteStatus;
 	}
 
-	public void setNoteStatus(String noteStatus) {
+	public void setNoteStatus(final String noteStatus) {
 		this.noteStatus = noteStatus;
 	}
 
@@ -63,7 +63,7 @@ public class Note {
 		return this.createdAt;
 	}
 
-	public void setCreatedAt(LocalDateTime createdAt) {
+	public void setCreatedAt(final LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 

@@ -30,7 +30,7 @@ public class NoteRepository {
 
 	/* This method should set the list variable with new list of notes */
 
-	public void setList(List<Note> list) {
+	public void setList(final List<Note> list) {
 		this.list = list;
 	}
 
@@ -39,13 +39,13 @@ public class NoteRepository {
 	 * list
 	 */
 
-	public void addNote(Note note) {
+	public void addNote(final Note note) {
 		this.list.add(note);
 	}
 
 	/* This method should deleted a specified note from the list */
 
-	public boolean deleteNote(int delNoteId) {
+	public boolean deleteNote(final int delNoteId) {
 		/* Use list iterator to find matching note id and remove it from the list */
 		
 		return list.removeIf((Note note) -> note.getNoteId() == delNoteId);
@@ -64,7 +64,7 @@ public class NoteRepository {
 	 * exists in the list
 	 */
 
-	public boolean exists(int noteId) {
+	public boolean exists(final int noteId) {
 		
 		return this.list.stream().anyMatch(note -> note.getNoteId() == noteId);
 

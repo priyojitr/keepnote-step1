@@ -37,9 +37,9 @@ public class NoteController {
 	 * ClassPathXmlApplicationContext() class. Retrieve the Note object from the
 	 * context. Retrieve the NoteRepository object from the context.
 	 */
-	ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml");
-	Note note = (Note) appContext.getBean("note");
-	NoteRepository noteRepository = (NoteRepository) appContext.getBean("noteRepository");
+	private transient ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml");
+	private Note note = (Note) appContext.getBean("note");
+	private transient NoteRepository noteRepository = (NoteRepository) appContext.getBean("noteRepository");
 	private static final String VIEW_NAME = "index";
 	private static final String NOTE_ID = "noteId";
 	private static final String NOTE_LIST = "noteList";
@@ -51,8 +51,8 @@ public class NoteController {
 	 * with views. it should map to the default URL i.e. "/"
 	 */
 	@GetMapping("/")
-	public String getAllNotes(ModelMap model) {
-		List<Note> noteList = noteRepository.getAllNotes();
+	public String getAllNotes(final ModelMap model) {
+		final List<Note> noteList = noteRepository.getAllNotes();
 		model.addAttribute(NOTE_LIST, noteList);
 		return VIEW_NAME;
 	}
@@ -68,7 +68,7 @@ public class NoteController {
 	 * "/saveNote".
 	 */
 	@PostMapping("/saveNote")
-	public String saveNote(ModelMap model, HttpServletRequest request) {
+	public String saveNote(final ModelMap model, final HttpServletRequest request) {
 		if(request.getParameter(NOTE_ID).isEmpty()
 				||request.getParameter("noteTitle").isEmpty()
 				||request.getParameter("noteContent").isEmpty()
@@ -78,7 +78,7 @@ public class NoteController {
 			model.addAttribute("error", "Duplicate note id");
 		}else {
 			// creating new note object from application context and assigning values
-			Note addNote = (Note)appContext.getBean("note");
+			final Note addNote = (Note)appContext.getBean("note");
 			addNote.setCreatedAt(LocalDateTime.now());
 			addNote.setNoteId(Integer.parseInt(request.getParameter(NOTE_ID)));
 			addNote.setNoteTitle(request.getParameter("noteTitle"));
@@ -98,8 +98,8 @@ public class NoteController {
 	 * deleteNote() method of the NoteRepository class This handler method should
 	 * map to the URL "/deleteNote"
 	 */
-	@PostMapping("/deleteNote")
-	public String deleteNote(ModelMap model, @RequestParam int noteId) {
+	@GetMapping("/deleteNote")
+	public String deleteNote(final ModelMap model, final @RequestParam int noteId) {
 		//delete provided note id from list
 		noteRepository.deleteNote(noteId);
 		//update note list

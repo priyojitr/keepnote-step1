@@ -52,7 +52,7 @@
 				<td>${note.noteStatus}</td>
 				<td>${note.createdAt}</td>
 				<td>
-					<form name="fmDelNote" action="deleteNote" method="post">
+					<form name="fmDelNote" action="deleteNote" method="get">
 						<input type="hidden" name="noteId" value="${note.noteId}">
 						<input type="submit" value="Delete Note">
 					</form>
